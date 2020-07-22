@@ -3,6 +3,7 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/VictorSzewczenko/shippy v0.0.0-20200722071123-40750951d30b h1:FAId0vSBuM73X0FzoSCaqDu3dMyK9z9pyZS2XrvWvjE=
 github.com/VictorSzewczenko/shippy v0.0.0-20200722071123-40750951d30b/go.mod h1:ZYasEDprPEjz8NrAQEQGIlsmH3gBfIghoSvMmvOzh2c=
 github.com/VictorSzewczenko/shippy-service-consignment v0.0.0-20200722071123-40750951d30b h1:XWhgOuhlYNuMz61lnnMrJ27duPRh+oic+1nge2GLzRY=
+github.com/VictorSzewczenko/shippy-service-consignment v0.0.0-20200722095426-654e58d62df8 h1:47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
