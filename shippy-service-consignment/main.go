@@ -6,7 +6,7 @@ import (
 	// Import the generated protobuf code
 	"context"
 
-	pb "github.com/EwanValentine/shippy/shippy-service-consignment/proto/consignment"
+	pb "github.com/VictorSzewczenko/shippy/shippy-service-consignment/proto/consignment"
 	"github.com/micro/go-micro/v2"
 )
 
