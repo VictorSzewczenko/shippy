@@ -75,6 +75,9 @@ github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200722113
 github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200722113042-f60fb0ce6aaf/go.mod h1:OSkrQnceFHHGJP7bsXKByyfgYdy2WRpKzwwg3p3yoOA=
 github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200723110232-e10bd9366bf3 h1:B6X2ehEbzuOUsDqma233QnGv+iSy5zQA/xUYsFYkXGE=
 github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200723110232-e10bd9366bf3/go.mod h1:xbiC1RRq/vAlUBtsEMYu/vkkr8r5LxJk97+fdf4Ys+4=
+github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200724113905-9dc7e0d20606 h1:ELanwQ8hz/F7KwKg9XtbLJI5Lni3sFQ5Ybx8iBAPJI8=
+github.com/VictorSzewczenko/shippy/shippy-service-consignment v0.0.0-20200724113905-9dc7e0d20606/go.mod h1:XaNjJ3KOEGeTC33SYsdH2zKRxx7D/ihG9FO+buBrPaM=
+github.com/VictorSzewczenko/shippy/shippy-service-vessel v0.0.0-20200724094430-0617a7b037cf/go.mod h1:A0P4fcXK/IhlrZR4RISFTx+tXc+Igc57t08vvpX1Q0I=
 github.com/abdullin/seq v0.0.0-20160510034733-d5467c17e7af/go.mod h1:5Jv4cbFiHJMsVxt52+i0Ha45fjshj6wxYr1r19tB9bw=
 github.com/akamai/AkamaiOPEN-edgegrid-golang v0.9.0/go.mod h1:zpDJeKyp9ScW4NNrbdr+Eyxvry3ilGPewKoXw3XGN1k=
 github.com/alangpierce/go-forceexport v0.0.0-20160317203124-8f1d6941cd75/go.mod h1:uAXEEpARkRhCZfEvy/y0Jcc888f9tHCc1W7/UeEtreE=
@@ -1125,6 +1128,7 @@ golang.org/x/tools v0.0.0-20191216173652-a0e659d51361 h1:RIIXAeV6GvDBuADKumTODat
 golang.org/x/tools v0.0.0-20191216173652-a0e659d51361/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/tools v0.0.0-20200130002326-2f3ba24bd6e7/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/tools v0.0.0-20200723000907-a7c6fd066f6d/go.mod h1:njjCfa9FT2d7l9Bc6FUM5FLjQPp3cFF28FI3qnDFljA=
+golang.org/x/tools v0.0.0-20200724022722-7017fd6b1305/go.mod h1:njjCfa9FT2d7l9Bc6FUM5FLjQPp3cFF28FI3qnDFljA=
 golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
