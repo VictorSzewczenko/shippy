@@ -10,7 +10,7 @@ import (
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-consignment/proto/consignment"
 
-	micro "github.com/micro/go-micro"
+	micro "github.com/micro/go-micro/v2"
 )
 
 const (
@@ -29,10 +29,10 @@ func parseFile(file string) (*pb.Consignment, error) {
 }
 
 func main() {
-	service := micro.NewService(micro.Name("shippy.cli.consignment"))
+	service := micro.NewService(micro.Name("shippy.consignment.cli"))
 	service.Init()
 
-	client := pb.NewShippingServiceClient("shippy.service.consignment", service.Client())
+	client := pb.NewShippingService("shippy.service.consignment", service.Client())
 
 	// Contact the server and print out its response.
 	file := defaultFilename
