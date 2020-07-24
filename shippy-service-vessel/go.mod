@@ -1,4 +1,6 @@
-module github.com/Victorszewczenko/shippy/shippy-service-vessel
+module github.com/VictorSzewczenko/shippy/shippy-service-vessel
+
+replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
 
 go 1.14
 
@@ -7,7 +9,7 @@ require (
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gogo/protobuf v1.3.1 // indirect
-	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/golang/protobuf v1.4.2
 	github.com/imdario/mergo v0.3.10 // indirect
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/miekg/dns v1.1.30 // indirect
@@ -23,6 +25,6 @@ require (
 	golang.org/x/tools v0.0.0-20200724022722-7017fd6b1305 // indirect
 	google.golang.org/genproto v0.0.0-20200722002428-88e341933a54 // indirect
 	google.golang.org/grpc v1.30.0 // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
+	google.golang.org/protobuf v1.25.0
 	honnef.co/go/tools v0.0.1-2020.1.4 // indirect
 )
