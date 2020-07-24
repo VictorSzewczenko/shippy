@@ -8,10 +8,15 @@ WORKDIR /app
 
 ENV GO111MODULE=on
 
+COPY go.mod .
+COPY go.sum .
+
+# Get dependancies - will also be cached if we won't change mod/sum
+RUN go mod download
+# Only copy source code now to prevent module layer invalidation.
 COPY . .
 
-RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o shippy-service-vessel
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o shippy-service-vessel *.go
 
 # Run container
 FROM alpine:latest
