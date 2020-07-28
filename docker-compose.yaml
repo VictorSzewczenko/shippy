@@ -48,6 +48,11 @@ services:
       - 50053:50051
     environment:
       MICRO_ADDRESS: ":50051"
+      DB_HOST: "database"
+      DB_USER: "admin"
+      DB_NAME: "postgres"
+      DB_PASSWORD: "password"
+
 
   database:
     image: postgres:alpine
@@ -56,6 +61,9 @@ services:
       POSTGRES_USER: "admin"
     ports:
       - 5432:5432
+
+  user-cli:
+    build: ./shippy-cli-user
 
 volumes: 
   data:
