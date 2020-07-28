@@ -5,6 +5,7 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
 go 1.14
 
 require (
+	github.com/VictorSzewczenko/shippy/shippy-service-user v0.0.0-20200728101611-6dfa311b3f3a
 	github.com/coreos/etcd v3.3.22+incompatible // indirect
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect

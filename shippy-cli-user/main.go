@@ -25,13 +25,36 @@ func createUser(ctx context.Context, service micro.Service, user *proto.User) er
 
 func main() {
 	// create and initialise a new service
-	service := micro.NewService()
+	service := micro.NewService(
+		micro.Flags(
+			&cli.StringFlag{
+				Name:  "name",
+				Usage: "Your Name",
+			},
+			&cli.StringFlag{
+				Name:  "email",
+				Usage: "E-Mail",
+			},
+			&cli.StringFlag{
+				Name:  "company",
+				Usage: "Company Name",
+			},
+			&cli.StringFlag{
+				Name:  "password",
+				Usage: "Password",
+			},
+		),
+	)
+
 	service.Init(
 		micro.Action(func(c *cli.Context) error {
+			log.Println(c)
 			name := c.String("name")
 			email := c.String("email")
 			company := c.String("company")
 			password := c.String("password")
+
+			log.Println("test:", name, email, company, password)
 
 			ctx := context.Background()
 			user := &proto.User{
