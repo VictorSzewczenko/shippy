@@ -4,6 +4,7 @@ package main
 import (
 	"context"
 	"errors"
+	"log"
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-user/proto/user"
 	"golang.org/x/crypto/bcrypt"
@@ -32,6 +33,7 @@ func (s *handler) Get(ctx context.Context, req *pb.User, res *pb.Response) error
 }
 
 func (s *handler) GetAll(ctx context.Context, req *pb.Request, res *pb.Response) error {
+	log.Printf("Attempting to get list of all users: %s", req)
 	results, err := s.repository.GetAll(ctx)
 	if err != nil {
 		return err
@@ -44,8 +46,12 @@ func (s *handler) GetAll(ctx context.Context, req *pb.Request, res *pb.Response)
 }
 
 func (s *handler) Auth(ctx context.Context, req *pb.User, res *pb.Token) error {
+	log.Printf("Attempting to Auth for user: %s", req)
+
 	user, err := s.repository.GetByEmail(ctx, req.Email)
 	if err != nil {
+		log.Printf("Error getting user by Email: %s: %s", req.Email, err)
+
 		return err
 	}
 

@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	proto "github.com/VictorSzewczenko/shippy/shippy-service-user/proto/user"
@@ -10,18 +9,18 @@ import (
 	"github.com/micro/go-micro/v2"
 )
 
-func createUser(ctx context.Context, service micro.Service, user *proto.User) error {
-	client := proto.NewUserService("shippy.service.user", service.Client())
-	rsp, err := client.Create(ctx, user)
-	if err != nil {
-		return err
-	}
+// func createUser(ctx context.Context, service micro.Service, user *proto.User) error {
+// 	client := proto.NewUserService("shippy.service.user", service.Client())
+// 	rsp, err := client.Create(ctx, user)
+// 	if err != nil {
+// 		return err
+// 	}
 
-	// print the response
-	fmt.Println("Response: ", rsp.User)
+// 	// print the response
+// 	fmt.Println("Response: ", rsp.User)
 
-	return nil
-}
+// 	return nil
+// }
 
 func main() {
 	// create and initialise a new service
@@ -56,7 +55,8 @@ func main() {
 
 			log.Println("test:", name, email, company, password)
 
-			ctx := context.Background()
+			// ctx := context.Background()
+
 			user := &proto.User{
 				Name:     name,
 				Email:    email,
@@ -64,10 +64,38 @@ func main() {
 				Password: password,
 			}
 
-			if err := createUser(ctx, service, user); err != nil {
-				log.Println("error creating user: ", err.Error())
-				return err
+			// if err := createUser(ctx, service, user); err != nil {
+			// 	log.Println("error creating user: ", err.Error())
+			// 	return err
+			// }
+
+			client := proto.NewUserService("shippy.service.user", service.Client())
+
+			r, err := client.Create(context.TODO(), user)
+
+			if err != nil {
+				log.Fatalf("Could not create: %v", err)
 			}
+			log.Printf("Created: %s", r.User.Id)
+
+			getAll, err := client.GetAll(context.Background(), &proto.Request{})
+			if err != nil {
+				log.Fatalf("Could not list users: %v", err)
+			}
+			for _, v := range getAll.Users {
+				log.Println(v)
+			}
+
+			authResponse, err := client.Auth(context.TODO(), &proto.User{
+				Email:    email,
+				Password: password,
+			})
+
+			if err != nil {
+				log.Fatalf("Could not authenticate user: %s error: %v\n", email, err)
+			}
+
+			log.Printf("Your access token is: %s \n", authResponse.Token)
 
 			return nil
 		}),
