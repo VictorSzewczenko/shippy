@@ -7,6 +7,7 @@ services:
   consignment:
     restart: always
     build: ./shippy-service-consignment
+    image: shippy-service-consignment
     depends_on:
       - datastore
       - vessel

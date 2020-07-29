@@ -28,4 +28,4 @@ WORKDIR /app
 ADD consignment.json /app/consignment.json
 COPY --from=builder /app/shippy-cli-consignment .
 
-CMD ["./shippy-cli-consignment"]
+ENTRYPOINT ["./shippy-cli-consignment"]

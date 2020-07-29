@@ -28,3 +28,7 @@ WORKDIR /app
 COPY --from=builder /app/shippy-service-consignment .
 
 CMD ["./shippy-service-consignment"]
+
+# FROM alpine
+# ADD shippy-service-consignment /shippy-service-consignment
+# ENTRYPOINT [ "/shippy-service-consignment" ]
