@@ -47,6 +47,7 @@ func (s *handler) GetAll(ctx context.Context, req *pb.Request, res *pb.Response)
 
 func (s *handler) Auth(ctx context.Context, req *pb.User, res *pb.Token) error {
 	log.Printf("Attempting to Auth for user: %s", req)
+	log.Printf("Attempting to get user by email using: %s", req.GetEmail())
 
 	user, err := s.repository.GetByEmail(ctx, req.Email)
 	if err != nil {
@@ -87,12 +88,13 @@ func (s *handler) Create(ctx context.Context, req *pb.User, res *pb.Response) er
 }
 
 func (s *handler) ValidateToken(ctx context.Context, req *pb.Token, res *pb.Token) error {
+	log.Printf("Attempting to validate token with the following request: %s", req)
 	claims, err := s.tokenService.Decode(req.Token)
 	if err != nil {
 		return err
 	}
 
-	if claims.User.Id == "" {
+	if claims.User.Email == "" {
 		return errors.New("invalid user")
 	}
 

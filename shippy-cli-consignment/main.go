@@ -11,8 +11,8 @@ import (
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-consignment/proto/consignment"
 
-	"github.com/micro/go-micro/metadata"
 	micro "github.com/micro/go-micro/v2"
+	"github.com/micro/go-micro/v2/metadata"
 )
 
 const (
