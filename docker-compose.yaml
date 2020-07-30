@@ -66,5 +66,13 @@ services:
   user-cli:
     build: ./shippy-cli-user
 
+  api:
+    image: micro/micro:v2.9.3
+    ports:
+      - 8080:8080
+    environment:
+      MICRO_REGISTRY: "mdns"
+    command: api --handler=rpc --address=:8080 --namespace=shippy --enable_rpc=true  --resolver=grpc
+
 volumes: 
   data:

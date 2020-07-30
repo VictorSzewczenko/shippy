@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-consignment/proto/consignment"
 	userService "github.com/VictorSzewczenko/shippy/shippy-service-user/proto/user"
@@ -102,7 +103,7 @@ func main() {
 // an error is returned.
 func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 	return func(ctx context.Context, req server.Request, resp interface{}) error {
-		log.Printf("Context value: %s", ctx)
+		log.Printf("Running authentication wrapper")
 
 		meta, ok := metadata.FromContext(ctx)
 		if !ok {
@@ -110,8 +111,17 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		}
 
 		// Note this is now uppercase (not entirely sure why this is...)
+		// Attempt to extract the token directly from the context meta-data, as this is set directly when calling directly from GRPC.
 		token := meta["Token"]
-		log.Println("Authenticating with token: ", token)
+		if len(token) == 0 {
+			authorization := meta["Authorization"]
+			if len(authorization) == 0 {
+				return errors.New("token found in auth meta-data")
+			}
+			token = strings.TrimPrefix(authorization, "Bearer ")
+
+		}
+		log.Printf("Authenticating with token: %s", token)
 
 		service := micro.NewService(
 			micro.Name("shippy.service.user"),

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"time"
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-user/proto/user"
@@ -34,8 +33,6 @@ func (srv *TokenService) Decode(token string) (*CustomClaims, error) {
 	tokenType, err := jwt.ParseWithClaims(token, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return key, nil
 	})
-
-	log.Printf("Decoding and fetched token type: %p", tokenType)
 
 	// Validate the token and return the custom claims
 	if claims, ok := tokenType.Claims.(*CustomClaims); ok && tokenType.Valid {
