@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      labels:
+        app: vessel
+    spec:
+        containers:
+        - name: user-service
+          image: victorszewczenko/shippy-service-consignment:latest
+          imagePullPolicy: Always
+          command: [
+            "./shippy-service-vessel",
+            "--selector=static",
+            "--server_address=:8080",
+          ]
+          env:
+          - name: DB_HOST
+            value: "postres:5432"
+          - name: UPDATED_AT
+            value: "Mon 19 Mar 2018 12:05:58 GMT"
+          ports:
+          - containerPort: 8080
+            name: user-port

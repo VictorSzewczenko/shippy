@@ -17,3 +17,8 @@ test:
 .PHONY: docker
 docker:
 	docker build . -t shippy-service-consignment:latest
+
+.PHONY: docker-push
+docker-push:
+	docker tag shippy-service-consignment:latest victorszewczenko/shippy-service-consignment:latest
+	docker push victorszewczenko/shippy-service-consignment:latest
