@@ -7,7 +7,6 @@ import (
 
 	pb "github.com/VictorSzewczenko/shippy/shippy-service-consignment/proto/consignment"
 	vesselProto "github.com/VictorSzewczenko/shippy/shippy-service-vessel/proto/vessel"
-	"github.com/pkg/errors"
 )
 
 type handler struct {
@@ -27,19 +26,21 @@ func (s *handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 		Capacity:  int32(len(req.Containers)),
 	})
 	if vesselResponse == nil {
-		return errors.New("error fetching vessel, returned nil")
+		//return errors.New("error fetching vessel, returned nil")
+		req.VesselId = "test-vessel-id"
+	} else {
+		// We set the VesselId as the vessel we got back from our
+		// vessel service
+		req.VesselId = vesselResponse.Vessel.Id
 	}
-
-	if err != nil {
-		return err
-	}
-
-	// We set the VesselId as the vessel we got back from our
-	// vessel service
-	req.VesselId = vesselResponse.Vessel.Id
+	// Un-comment when there are vessels.
+	// if err != nil {
+	// 	return err
+	// }
 
 	// Save our consignment
 	if err = s.repository.Create(ctx, MarshalConsignment(req)); err != nil {
+		log.Printf("Error creating consignment: %s", err)
 		return err
 	}
 
