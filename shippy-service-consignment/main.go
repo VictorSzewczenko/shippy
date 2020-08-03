@@ -13,6 +13,7 @@ import (
 	userService "github.com/VictorSzewczenko/shippy/shippy-service-user/proto/user"
 	vesselProto "github.com/VictorSzewczenko/shippy/shippy-service-vessel/proto/vessel"
 	"github.com/micro/go-micro/v2"
+	"github.com/micro/go-micro/v2/client"
 	"github.com/micro/go-micro/v2/metadata"
 	"github.com/micro/go-micro/v2/server"
 )
@@ -125,12 +126,14 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		}
 		log.Printf("Authenticating with token: %s", token)
 
-		service := micro.NewService(
-			micro.Name("shippy.service.user"),
-		)
+		// Initiating a service here to get the client is a mistake! For some unknown reason, attempting to init the user service like this in order to get teh client after
+		// results in this (the consignment service) service's service registry mechanism breaking, and the service becomes un-reachable after the first service registration TTL expires.
+		// service := micro.NewService(
+		// 	micro.Name("shippy.service.user"),
+		// )
 
 		// Auth here
-		authClient := userService.NewUserService("shippy.service.user", service.Client())
+		authClient := userService.NewUserService("shippy.service.user", client.DefaultClient)
 		_, err := authClient.ValidateToken(ctx, &userService.Token{
 			Token: token,
 		})
