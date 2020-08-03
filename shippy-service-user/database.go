@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/jmoiron/sqlx"
@@ -15,6 +16,7 @@ func NewConnection() (*sqlx.DB, error) {
 	dbName := os.Getenv("DB_NAME")
 	password := os.Getenv("DB_PASSWORD")
 	conn := fmt.Sprintf("host=%s user=%s dbname=%s password=%s sslmode=disable", host, user, dbName, password)
+	log.Printf("Attempting to connect to the DB with the following connection string: %s", conn)
 	db, err := sqlx.Connect("postgres", conn)
 	if err != nil {
 		return nil, err

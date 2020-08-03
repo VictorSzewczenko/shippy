@@ -3,6 +3,7 @@ package main
 
 import (
 	"context"
+	"log"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -11,9 +12,12 @@ import (
 
 // CreateClient -
 func CreateClient(ctx context.Context, uri string, retry int32) (*mongo.Client, error) {
+	log.Print("Attempting to connect to MongoDB.")
 	conn, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err := conn.Ping(ctx, nil); err != nil {
+		log.Printf("Error connecting to Mongo DB: %s", err)
 		if retry >= 3 {
+			log.Printf("Retry count of %s exceeded. Exiting", retry)
 			return nil, err
 		}
 		retry = retry + 1

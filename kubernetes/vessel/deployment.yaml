@@ -17,15 +17,20 @@ spec:
           image: victorszewczenko/shippy-service-vessel:latest
           imagePullPolicy: Always
           command: [
-            "./shippy-vessel-service",
-            "--selector=static",
+            "./shippy-service-vessel",
+            # "--selector=static",
             "--server_address=:8080",
           ]
           env:
           - name: DB_HOST
-            value: "mongo:27017"
-          - name: UPDATED_AT
-            value: "Mon 19 Mar 2018 12:05:58 GMT"
+            value: "mongodb://mongo:27017"
+        #   - name: UPDATED_AT
+        #     value: "Mon 19 Mar 2018 12:05:58 GMT"
+        #   - name: MICRO_REGISTRY
+        #     value: kubernetes
+          - name: MICRO_REGISTRY
+            value: "etcd"
+          - name: MICRO_REGISTRY_ADDRESS
+            value: "etcd-cluster-client"
           ports:
           - containerPort: 8080
-            name: vessel-port

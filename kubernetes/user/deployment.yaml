@@ -10,22 +10,39 @@ spec:
   template:
     metadata:
       labels:
-        app: vessel
+        app: user
+        micro: service
     spec:
         containers:
         - name: user-service
           image: victorszewczenko/shippy-service-user:latest
           imagePullPolicy: Always
           command: [
-            "./shippy-vessel-service",
-            "--selector=static",
-            "--server_address=:8080",
+            "./shippy-service-user",
+            # "--selector=static",
+            "--server_address=0.0.0.0:8080",
           ]
           env:
           - name: DB_HOST
-            value: "postres:5432"
+            value: "postgres"
+          - name: DB_NAME
+            value: "postgres"
+          - name: DB_USER
+            value: "admin"
+          - name: DB_PASSWORD
+            value: "password"
           - name: UPDATED_AT
             value: "Mon 19 Mar 2018 12:05:58 GMT"
+          # - name: MICRO_REGISTRY
+          #   value: kubernetes
+          - name: MICRO_REGISTRY
+            value: "etcd"
+          - name: MICRO_REGISTRY_ADDRESS
+            value: "etcd-cluster-client"
+          - name: MICRO_REGISTER_TTL
+            value: "10"
+          - name: MICRO_REGISTER_INTERVAL
+            value: "10"
           ports:
           - containerPort: 8080
             name: user-port

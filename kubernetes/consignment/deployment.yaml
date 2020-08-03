@@ -1,31 +1,44 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: user
+  name: consignment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user
+      app: consignment
   template:
     metadata:
       labels:
-        app: vessel
+        app: consignment
+        micro: service
     spec:
         containers:
-        - name: user-service
+        - name: consignment-service
           image: victorszewczenko/shippy-service-consignment:latest
           imagePullPolicy: Always
           command: [
-            "./shippy-service-vessel",
-            "--selector=static",
-            "--server_address=:8080",
+            "./shippy-service-consignment",
+            # "--selector=static",
+            "--runtime=kubernetes",
+            # "--server_advertise=consignment",
+            "--registry=etcd",
+            "--registry_address=etcd-cluster-client",
+            "--server_address=0.0.0.0:8080",
           ]
           env:
           - name: DB_HOST
-            value: "postres:5432"
-          - name: UPDATED_AT
-            value: "Mon 19 Mar 2018 12:05:58 GMT"
+            value: "mongodb://mongo:27017"
+          # - name: MICRO_REGISTRY
+          #   value: kubernetes
+          # - name: MICRO_REGISTRY
+          #   value: "etcd"
+          # - name: MICRO_REGISTRY_ADDRESS
+          #   value: "etcd-cluster-client"
+          # - name: MICRO_REGISTER_TTL
+          #   value: "15"
+          # - name: MICRO_REGISTER_INTERVAL
+          #   value: "15"
           ports:
           - containerPort: 8080
-            name: user-port
+            name: cons-port

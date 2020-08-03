@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro
+  template:
+    metadata:
+      labels:
+        app: micro
+    spec:
+        containers:
+        - name: micro
+          image: micro/micro:v2.9.3
+        #   image: micro/micro:k8sbuild
+          args:
+            - "api"
+            - "--handler=rpc"
+            # - "--namespace=shippy"
+            - "--enable_rpc=true"
+            - "--resolver=host"
+          env:
+          - name: MICRO_API_ADDRESS
+            value: ":80"
+          - name: MICRO_REGISTRY
+            value: "etcd"
+          - name: MICRO_REGISTRY_ADDRESS
+            value: "etcd-cluster-client"
+          - name: MICRO_REGISTER_TTL
+            value: "10"
+          - name: MICRO_REGISTER_INTERVAL
+            value: "10"
+          ports:
+          - containerPort: 80
+            name: port

@@ -51,7 +51,9 @@ func main() {
 	h := &handler{repository, vesselClient}
 
 	// Register handlers
-	pb.RegisterShippingServiceHandler(service.Server(), h)
+	if err := pb.RegisterShippingServiceHandler(service.Server(), h); err != nil {
+		log.Panic(err)
+	}
 
 	// Run the server
 	if err := service.Run(); err != nil {

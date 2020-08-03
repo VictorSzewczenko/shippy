@@ -664,6 +664,13 @@ github.com/micro/go-micro/v2 v2.9.1-0.20200716131338-e63b9015ae45/go.mod h1:JgTt
 github.com/micro/go-micro/v2 v2.9.1-0.20200723075038-fbdf1f2c1c4c/go.mod h1:niBfOpaZzEw22NJlAtz1CEHocA3qrkzpcTYi0h0d8CE=
 github.com/micro/go-micro/v2 v2.9.1 h1:+S9koIrNWARjpP6k2TZ7kt0uC9zUJtNXzIdZTZRms7Q=
 github.com/micro/go-micro/v2 v2.9.1/go.mod h1:x55ZM3Puy0FyvvkR3e0ha0xsE9DFwfPSUMWAIbFY0SY=
+github.com/micro/go-plugins v1.5.1 h1:swcFD7ynCTUo98APqIEIbPu2XMd6yVGTnI8PqdnCwOQ=
+github.com/micro/go-plugins/registry/etcd v0.0.0-20200119172437-4fe21aa238fd h1:ZBwRuDGymfMFL6hoPOw4jVIZ/kNyygP9WEnT8xMWrCY=
+github.com/micro/go-plugins/registry/etcd/v2 v2.9.1 h1:qzuFu/XbgT4RUQy3OPWAynqs5yi5dTV2n855nLUAj3M=
+github.com/micro/go-plugins/registry/etcd/v2 v2.9.1/go.mod h1:0PvzcEdMKfyVnL1riL5D0ole32OhR8XvmWd2MLaHcSg=
+github.com/micro/go-plugins/registry/kubernetes v0.0.0-20200119172437-4fe21aa238fd h1:FrlK4kIbFDRyROigjF2Uhn6kN2zIzKNQcRucTrq+Yfg=
+github.com/micro/go-plugins/registry/kubernetes/v2 v2.9.1 h1:lHC7DaAOL0OA8nLKmb3DcRSYr8HpgUOW+Lpvhp+iZI4=
+github.com/micro/go-plugins/registry/kubernetes/v2 v2.9.1/go.mod h1:VmKy2vY/1g2j9G2bLKNv+Y3qFhkd+TEhnWtpTpHlnzU=
 github.com/micro/go-rcache v0.1.0/go.mod h1:INzyZjXO5M+PmN2A33YxD4TaOY61xjFIM4CfSHv+At8=
 github.com/micro/go-rcache v0.2.0/go.mod h1:EoiTwbY2ubQ6lc3ScV+SnmKbelDzeFezDxPDvF8XDxw=
 github.com/micro/go-rcache v0.2.1/go.mod h1:aPCNY3RbjBdyd6ShLENl4MDSgpAiWIU4LyNLE9+TOEo=

@@ -11,4 +11,4 @@ spec:
     targetPort: 5432
   clusterIP: None
   selector:
-    role: postgres
+    app: postgres
